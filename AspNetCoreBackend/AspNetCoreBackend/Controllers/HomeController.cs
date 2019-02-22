@@ -12,12 +12,16 @@ namespace AspNetCoreBackend.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            string tiedosto = @"C:\Bootcamp\WebDemo\AspNetCoreBackend\AspNetCoreBackend\wwwroot\otsikot.txt";
+            List<string> otsikot = System.IO.File.ReadAllLines(tiedosto).ToList();
+
+            return View(otsikot);
+
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Oman sovelluksen tiedot.";
 
             return View();
         }
@@ -31,6 +35,11 @@ namespace AspNetCoreBackend.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult Info()
+        {         
             return View();
         }
 
