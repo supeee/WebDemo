@@ -12,12 +12,19 @@ namespace AspNetCoreBackend.Controllers
     {
         public IActionResult Index()
         {
-            string tiedosto = @"C:\Bootcamp\WebDemo\AspNetCoreBackend\AspNetCoreBackend\wwwroot\otsikot.txt";
-            List<string> otsikot = System.IO.File.ReadAllLines(tiedosto).ToList();
-
-            return View(otsikot);
+            return View();
 
         }
+
+        public IActionResult File()
+        {
+            string file = @"C:\Bootcamp\WebDemo\AspNetCoreBackend\AspNetCoreBackend\wwwroot\file.txt";
+            List<string> filecontent = System.IO.File.ReadAllLines(file).ToList();
+
+            return View(filecontent);
+
+        }
+
 
         public IActionResult About()
         {

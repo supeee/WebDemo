@@ -1,0 +1,3 @@
+﻿Entitymalli luotiin komennolla: Package Manager Console
+
+Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=Northwind;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Database

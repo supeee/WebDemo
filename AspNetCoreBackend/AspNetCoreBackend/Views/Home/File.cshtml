@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "File";
+}
+
+
+
+<h1>File page</h1>
+<p>Content of the file page.</p>
+
+
+
+@*Write to file: <input type="text" name="">
+        <button type="button" onclick="jotain">Add</button>
+
+        <button type="button" onclick="Read()">Read from file</button>
+
+
+    @foreach (string filecontent in Model)
+    {
+        <h3>@filecontent</h3>
+    }
+*@
+
+
+
+First Name: <input type="text" id="myText">
+
+<button onclick="Add()">Add to file</button>
+<button onclick="Read()">Read file</button>
+
+<p id="addedtext"></p>
+
+
+@*
+    @foreach (string filecontent in Model)
+    {
+        <h3>@filecontent</h3>
+    }
+*@
+
+
+
+
+
+
+<script>
+    function Add() {
+        var x = document.getElementById("myText").value;
+        document.getElementById("addedtext").innerHTML = x;
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

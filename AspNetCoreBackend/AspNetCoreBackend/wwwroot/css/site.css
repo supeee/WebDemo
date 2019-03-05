@@ -12,8 +12,22 @@ body {
     padding-right: 15px;
 }
 
-/* Carousel */
-.carousel-caption p {
+.navbar-inverse .navbar-nav > li > a {
+    color: black;
+}
+
+.navbar-inverse .navbar-brand {
+    color: black;
+}
+
+
+.navbar-inverse {
+    color: black;
+    background-color: lightblue;
+    border-color: lightblue;
+}
+    /* Carousel */
+    .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
 }
