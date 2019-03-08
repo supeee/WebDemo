@@ -29,7 +29,9 @@ namespace AspNetCoreBackend
                 options.AddPolicy("OmaCorsPolicy",
                 builder =>
                 {
-                    builder.AllowAnyOrigin();
+                    builder.AllowAnyOrigin()
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
                 });
             });
 
@@ -42,6 +44,16 @@ namespace AspNetCoreBackend
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        }
+
+        private void AllowAnyHeader()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AllowAnyMethod()
+        {
+            throw new NotImplementedException();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
