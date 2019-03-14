@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import Navigaatio from './Navigaatio';
-import LähetysNappi from './LähetysNappi';
 
-class AsiakasLista extends Component {
+class TuoteLista extends Component {
 
     constructor(props) {
         super(props);
 
-        console.log("AsiakasLista.constructor");
+        console.log("TuoteLista.constructor");
         this.state = { ladattu: false, data: null };
     }
 
     componentDidMount() {
 
-        console.log("AsiakasLista.componentDidMount");
+        console.log("Tuote.componentDidMount");
         let komponentti = this;
 
-        fetch('https://localhost:44365/api/asiakkaat')
+        fetch('https://localhost:44365/api/tuotteet')
             .then(response => response.json())
             .then(json => {
 
@@ -28,55 +27,54 @@ class AsiakasLista extends Component {
 
             });
 
-        console.log("AsiakasLista.componentDidMount: fetch-kutsu tehty");
+        console.log("Tuote.componentDidMount: fetch-kutsu tehty");
     }
 
     render() {
-        console.log("AsiakasLista.render");
+        console.log("TuoteLista.render");
 
         if (this.state.ladattu === false) {
             return (
                 <div>
-                    <h1>Odota, ladataan tietoja...</h1>
+                    <h1>Odota, ladataan tuotteiden tietoja...</h1>
                 </div>
             );
         }
         else {
 
-            let asiakkaat = [];
+            let tuotteet = [];
             for (let index = 0; index < this.state.data.length; index++) {
-                let nimi = this.state.data[index].companyName;
-                let kontakti = this.state.data[index].contactName;
-                let kaupunki = this.state.data[index].city;
+                let tuotenimi = this.state.data[index].productName;
+                let tuotehinta = this.state.data[index].unitPrice;
+                let tuotemaara = this.state.data[index].unitsInStock;
 
-                asiakkaat.push(
+                tuotteet.push(
                     <tr>
                         <th scope="row">{index + 1}</th>
-                        <td>{nimi}</td>
-                        <td>{kontakti}</td>
-                        <td>{kaupunki}</td>
+                        <td>{tuotenimi}</td>
+                        <td>{tuotehinta}</td>
+                        <td>{tuotemaara}</td>
                     </tr>);
             }
 
             return (
                 <div>
                     <Navigaatio></Navigaatio>
-                    <LähetysNappi></LähetysNappi>
                     <p></p>
-                    <h1>Asiakkaat Northwind-tietokannasta</h1>
+                    <h1>Tuotteet Northwind-tietokannasta</h1>
                     <p></p>
 
                     <table className="table table-dark">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Yritys</th>
-                                <th scope="col">Kontakti</th>
-                                <th scope="col">Kaupunki</th>
+                                <th scope="col">Tuotenimi</th>
+                                <th scope="col">Kpl-hinta</th>
+                                <th scope="col">Määrä</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {asiakkaat}
+                            {tuotteet}
                         </tbody>
                     </table>
                 </div>
@@ -85,4 +83,4 @@ class AsiakasLista extends Component {
     }
 }
 
-export default AsiakasLista;
+export default TuoteLista;
